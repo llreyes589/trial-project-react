@@ -34,6 +34,13 @@ const List = () => {
         }
         setFilteredMovies(filteredValues)
     }
+
+    const handleCloseFilter = () => {
+        setShowFilter(!showFilter)
+        setFilteredMovies(movies)
+        setQuery('')
+
+    }
     return (
         <div>
             <h2>Movies</h2>
@@ -61,14 +68,13 @@ const List = () => {
                             </form>                    
                         </div>
                         <div className='col-md col-sm-12'>
-                            <button className='btn btn-danger btn-sm' onClick={e => setShowFilter(!showFilter)}>Close</button>
+                            <button className='btn btn-danger btn-sm' onClick={e => handleCloseFilter()}>Close</button>
                         </div>
                     </div>
                     <hr />
                 </>
             )   :
-
-            <button className='btn btn-success btn-sm float-right' onClick={e => setShowFilter(!showFilter)}>Filter</button>
+                <button className='btn btn-success btn-sm float-right' onClick={e => setShowFilter(!showFilter)}>Filter</button>
             }
             <table className='table table-striped'>
                 <thead>
