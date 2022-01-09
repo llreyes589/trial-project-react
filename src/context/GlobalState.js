@@ -72,6 +72,16 @@ export const GlobalProvider = ({children}) =>{
         }
     }
 
+    // sort movie
+    const sortMovie = async(order) => {
+        try{
+            let {data} = await axios.post('http://localhost:90/api/movies/sort', order)
+            dispatch({type: 'FETCH_MOVIES', payload:data})
+        }catch({response}){
+            alert(response.statusText)
+        }
+    }
+
     return (
         <GlobalContext.Provider value={{
             inputs: state.inputs,
@@ -80,7 +90,8 @@ export const GlobalProvider = ({children}) =>{
             addMovie,
             changeInputs,
             editMovie,
-            deleteMovie
+            deleteMovie,
+            sortMovie
         }}>
             {children}
         </GlobalContext.Provider>
